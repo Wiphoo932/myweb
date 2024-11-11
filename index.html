@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4a5568 0%, #2b6cb0 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #2b6cb0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .skills-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        footer {
+            background-color: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+
+        .section-title {
+            color: #2b6cb0;
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ยินดีต้อนรับสู่ Portfolio ของฉัน</h1>
+        <p>นักเรียนผู้มีความหลงใหลในการเรียนรู้</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">เกี่ยวกับฉัน/ติดต่อ</a></li>
+            <li><a href="#skills">ทักษะ</a></li>
+            <li><a href="#projects">ผลงาน</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about" class="profile-section">
+            <img src="image/ดีไซน์ที่ยังไม่ได้ตั้งชื่อ.png" alt="โปรไฟล์" class="profile-img">
+            <div>
+                <h2 class="section-title">เกี่ยวกับฉัน ด.ช.วิภู เชื้อจีน</h2>
+                <p>สวัสดีครับ ฉันเป็นนักเรียนที่มีความสนใจในการพัฒนาตนเองและการเรียนรู้สิ่งใหม่ๆ ปัจจุบันกำลังศึกษาอยู่ที่ โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก</p>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <h2 class="section-title">ทักษะ</h2>
+            <div class="skill-tags">
+                <span class="skill-tag">การเขียนโปรแกรม</span>
+                <span class="skill-tag">การออกแบบ</span>
+                <span class="skill-tag">การทำงานเป็นทีม</span>
+                <span class="skill-tag">การแก้ปัญหา</span>
+                <span class="skill-tag">ภาษาอังกฤษ</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">ผลงานของฉัน</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="Image.png" alt="โปรเจค 1" class="project-img">
+                    <div class="project-info">
+                        <h3>โปรเจค 1</h3>
+                        <p>รายละเอียดโปรเจค...</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="image/image (1).png" alt="โปรเจค 2" class="project-img">
+                    <div class="project-info">
+                        <h3>โปรเจค 2</h3>
+                        <p>รายละเอียดโปรเจค...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h>ติดต่อได้ที่</h>
+            <p>อีเมล: wiphoo.che@pccpl.ac.th</p>
+            <p>โทรศัพท์: 095-027-8099</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
