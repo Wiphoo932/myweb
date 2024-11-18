@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* หน้าปกและรูปโปรไฟล์ */
+        .cover-section {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(135deg, #63b3ed 0%, #4299e1 100%);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+        }
+
+        .cover-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+                            linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+                            linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%),
+                            linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+            background-size: 20px 20px;
+        }
+
+        .profile-container {
+            position: relative;
+            margin-top: -75px;
+            padding: 0 2rem;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+
+        /* ข้อมูลส่วนตัว */
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .name-section {
+            flex-grow: 1;
+        }
+
+        .name {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            color: #4a5568;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .primary-btn {
+            background: #4299e1;
+            color: white;
+        }
+
+        .secondary-btn {
+            background: #edf2f7;
+            color: #4a5568;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ข้อมูลเพิ่มเติม */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-section {
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 15px;
+        }
+
+        .section-title {
+            color: #2b6cb0;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+
+        .info-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e2e8f0;
+            border-radius: 50%;
+            color: #2b6cb0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            color: #4299e1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .bio {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .contact-buttons {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ส่วนรูปปก -->
+        <div class="cover-section">
+            <div class="cover-pattern"></div>
+        </div>
+
+        <!-- ส่วนข้อมูลหลัก -->
+        <div class="info-card">
+            <div class="profile-container">
+                <img src="/api/placeholder/150/150" alt="โปรไฟล์" class="profile-image">
+            </div>
+
+            <div class="profile-header">
+                <div class="name-section">
+                    <h1 class="name">ชื่อ นามสกุล</h1>
+                    <div class="title">นักเรียนชั้นมัธยมศึกษาปีที่ ...</div>
+                </div>
+                <div class="contact-buttons">
+                    <button class="contact-btn primary-btn">
+                        ✉️ ติดต่อ
+                    </button>
+                    <button class="contact-btn secondary-btn">
+                        📄 ดูเรซูเม่
+                    </button>
+                </div>
+            </div>
+
+            <p class="bio">
+                สวัสดีครับ ฉันเป็นนักเรียนที่มีความสนใจด้านเทคโนโลยีและการเขียนโปรแกรม 
+                ชอบเรียนรู้สิ่งใหม่ๆ และพัฒนาตัวเองอยู่เสมอ ปัจจุบันกำลังศึกษาอยู่ที่โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก
+                มีความฝันที่จะเป็นนักพัฒนาซอฟต์แวร์ในอนาคต
+            </p>
+
+            <div class="info-grid">
+                <!-- ข้อมูลการติดต่อ -->
+                <div class="info-section">
+                    <h3 class="section-title">
+                        📞 ข้อมูลการติดต่อ
+                    </h3>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <span class="info-icon">✉️</span>
+                            <span>wiphoo@pccpl.ac.th</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-icon">📱</span>
+                            <span>095-027-8099</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>พิษณุโลก, ประเทศไทย</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- ข้อมูลส่วนตัว -->
+                <div class="info-section">
+                    <h3 class="section-title">
+                        👤 ข้อมูลส่วนตัว
+                    </h3>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <span class="info-icon">📅</span>
+                            <span>วันเกิด: 11 กันยายน 2553</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-icon">📚</span>
+                            <span>แผนการเรียน: วิทย์-คณิต</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-icon">🌟</span>
+                            <span>งานอดิเรก: เขียนโค้ด, อ่านหนังสือ</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- โซเชียลมีเดีย -->
+                <div class="info-section">
+                    <h3 class="section-title">
+                        🌐 โซเชียลมีเดีย
+                    </h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">💼</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
