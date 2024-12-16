@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บไซต์การศึกษา</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .subject-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .subject-card:hover {
+            transform: scale(1.05);
+        }
+
+        .subject-card h2 {
+            color: #2980b9;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .subject-topics {
+            list-style-type: none;
+        }
+
+        .subject-topics li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topic-badge {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        @media (max-width: 768px) {
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>เว็บไซต์การศึกษา</h1>
+            <p>แหล่งเรียนรู้สำหรับนักเรียน</p>
+        </div>
+
+        <div class="subjects-grid">
+            <div class="subject-card">
+                <h2>ภาษาไทย</h2>
+                <ul class="subject-topics">
+                    <li>
+                        วรรณคดี
+                        <span class="topic-badge">เริ่มต้น</span>
+                    </li>
+                    <li>
+                        การเขียนเรียงความ
+                        <span class="topic-badge">กลาง</span>
+                    </li>
+                    <li>
+                        การอ่านวิเคราะห์
+                        <span class="topic-badge">สูง</span>
+                    </li>
+                    <li>
+                        ไวยากรณ์ไทย
+                        <span class="topic-badge">เริ่มต้น</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subject-card">
+                <h2>คณิตศาสตร์</h2>
+                <ul class="subject-topics">
+                    <li>
+                        พีชคณิต
+                        <span class="topic-badge">กลาง</span>
+                    </li>
+                    <li>
+                        เรขาคณิต
+                        <span class="topic-badge">เริ่มต้น</span>
+                    </li>
+                    <li>
+                        สมการ
+                        <span class="topic-badge">สูง</span>
+                    </li>
+                    <li>
+                        สถิติ
+                        <span class="topic-badge">กลาง</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subject-card">
+                <h2>วิทยาศาสตร์</h2>
+                <ul class="subject-topics">
+                    <li>
+                        ชีววิทยา
+                        <span class="topic-badge">กลาง</span>
+                    </li>
+                    <li>
+                        เคมี
+                        <span class="topic-badge">สูง</span>
+                    </li>
+                    <li>
+                        ฟิสิกส์
+                        <span class="topic-badge">กลาง</span>
+                    </li>
+                    <li>
+                        โลกและอวกาศ
+                        <span class="topic-badge">เริ่มต้น</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
