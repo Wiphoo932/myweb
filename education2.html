@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เว็บไซต์การศึกษา</title>
+    <title>My Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -13,154 +13,193 @@
         }
 
         body {
-            background-color: #f4f7f6;
-            color: #2c3e50;
+            background-color: #f5f7fa;
+            color: #2d3748;
             line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4a5568 0%, #2b6cb0 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 2rem;
         }
 
-        .header {
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 10px;
+        .projects-section {
+            position: relative;
         }
 
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .subject-dropdown {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10;
         }
 
-        .subject-card {
+        .dropdown-select {
+            background-color: #e2e8f0;
+            border: 1px solid #cbd5e0;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .dropdown-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
             background-color: white;
-            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 20px;
-            transition: transform 0.3s ease;
+            min-width: 200px;
+            max-height: 300px;
+            overflow-y: auto;
         }
 
-        .subject-card:hover {
-            transform: scale(1.05);
+        .dropdown-select:hover + .dropdown-list,
+        .dropdown-list:hover {
+            display: block;
         }
 
-        .subject-card h2 {
-            color: #2980b9;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
+        .dropdown-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .subject-topics {
-            list-style-type: none;
+        .dropdown-item:hover {
+            background-color: #f5f7fa;
         }
 
-        .subject-topics li {
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .project-card.active {
+            display: block;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            color: #2b6cb0;
+            margin-bottom: 2rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-        }
-
-        .topic-badge {
-            background-color: #3498db;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8em;
-        }
-
-        @media (max-width: 768px) {
-            .subjects-grid {
-                grid-template-columns: 1fr;
-            }
+            justify-content: space-between;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>เว็บไซต์การศึกษา</h1>
-            <p>แหล่งเรียนรู้สำหรับนักเรียน</p>
-        </div>
-
-        <div class="subjects-grid">
-            <div class="subject-card">
-                <h2>ภาษาไทย</h2>
-                <ul class="subject-topics">
-                    <li>
-                        วรรณคดี
-                        <span class="topic-badge">เริ่มต้น</span>
-                    </li>
-                    <li>
-                        การเขียนเรียงความ
-                        <span class="topic-badge">กลาง</span>
-                    </li>
-                    <li>
-                        การอ่านวิเคราะห์
-                        <span class="topic-badge">สูง</span>
-                    </li>
-                    <li>
-                        ไวยากรณ์ไทย
-                        <span class="topic-badge">เริ่มต้น</span>
-                    </li>
-                </ul>
+        <section class="projects-section">
+            <div class="section-title">
+                <h2>ผลงานของฉัน</h2>
+                <div class="subject-dropdown">
+                    <div class="dropdown-select">เลือกวิชา</div>
+                    <div class="dropdown-list">
+                        <div class="dropdown-item" data-subject="all">ทั้งหมด</div>
+                        <div class="dropdown-item" data-subject="thai">วิชาภาษาไทย📚</div>
+                        <div class="dropdown-item" data-subject="english">วิชาภาษาอังกฤษ📖</div>
+                        <div class="dropdown-item" data-subject="science">วิชาวิทยาศาสตร์🔬</div>
+                        <div class="dropdown-item" data-subject="math">วิชาคณิตศาสตร์➗</div>
+                        <div class="dropdown-item" data-subject="programming">วิชาการเขียนโปรแกรม🖥️</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="subject-card">
-                <h2>คณิตศาสตร์</h2>
-                <ul class="subject-topics">
-                    <li>
-                        พีชคณิต
-                        <span class="topic-badge">กลาง</span>
-                    </li>
-                    <li>
-                        เรขาคณิต
-                        <span class="topic-badge">เริ่มต้น</span>
-                    </li>
-                    <li>
-                        สมการ
-                        <span class="topic-badge">สูง</span>
-                    </li>
-                    <li>
-                        สถิติ
-                        <span class="topic-badge">กลาง</span>
-                    </li>
-                </ul>
+            <div class="projects-grid">
+                <div class="project-card active" data-subject="thai">
+                    <img src="/api/placeholder/400/200" alt="โปรเจค ภาษาไทย" class="project-img">
+                    <div class="project-info">
+                        <h3>โปรเจค ภาษาไทย</h3>
+                        <p>การวิเคราะห์วรรณคดีและการเขียนเรียงความ</p>
+                    </div>
+                </div>
+                <div class="project-card active" data-subject="english">
+                    <img src="/api/placeholder/400/200" alt="โปรเจค ภาษาอังกฤษ" class="project-img">
+                    <div class="project-info">
+                        <h3>โปรเจค ภาษาอังกฤษ</h3>
+                        <p>การนำเสนอภาษาอังกฤษและการสื่อสาร</p>
+                    </div>
+                </div>
+                <div class="project-card active" data-subject="science">
+                    <img src="/api/placeholder/400/200" alt="โปรเจค วิทยาศาสตร์" class="project-img">
+                    <div class="project-info">
+                        <h3>โปรเจค วิทยาศาสตร์</h3>
+                        <p>การทดลองทางวิทยาศาสตร์และการสังเกตการณ์</p>
+                    </div>
+                </div>
+                <div class="project-card active" data-subject="math">
+                    <img src="/api/placeholder/400/200" alt="โปรเจค คณิตศาสตร์" class="project-img">
+                    <div class="project-info">
+                        <h3>โปรเจค คณิตศาสตร์</h3>
+                        <p>การแก้ปัญหาและการคำนวณทางคณิตศาสตร์</p>
+                    </div>
+                </div>
+                <div class="project-card active" data-subject="programming">
+                    <img src="/api/placeholder/400/200" alt="โปรเจค การเขียนโปรแกรม" class="project-img">
+                    <div class="project-info">
+                        <h3>โปรเจค การเขียนโปรแกรม</h3>
+                        <p>การพัฒนาแอปพลิเคชันและเขียนโค้ด</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="subject-card">
-                <h2>วิทยาศาสตร์</h2>
-                <ul class="subject-topics">
-                    <li>
-                        ชีววิทยา
-                        <span class="topic-badge">กลาง</span>
-                    </li>
-                    <li>
-                        เคมี
-                        <span class="topic-badge">สูง</span>
-                    </li>
-                    <li>
-                        ฟิสิกส์
-                        <span class="topic-badge">กลาง</span>
-                    </li>
-                    <li>
-                        โลกและอวกาศ
-                        <span class="topic-badge">เริ่มต้น</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        </section>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            const projectCards = document.querySelectorAll('.project-card');
+            const dropdownSelect = document.querySelector('.dropdown-select');
+
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const selectedSubject = item.getAttribute('data-subject');
+                    
+                    // Update dropdown text
+                    dropdownSelect.textContent = item.textContent;
+
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (selectedSubject === 'all' || card.getAttribute('data-subject') === selectedSubject) {
+                            card.classList.add('active');
+                        } else {
+                            card.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
