@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            height: 500px;
+            background: url('/api/placeholder/1200/500') center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: slideIn 1s ease-out;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.1);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-category {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover .news-category {
+            background: #1976d2;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1a237e;
+        }
+
+        .news-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .featured-section {
+            background: white;
+            padding: 3rem 0;
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #1a237e;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #1976d2;
+        }
+
+        .search-bar {
+            padding: 1rem;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 600px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-button {
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 0.5rem 2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #1565c0;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #1a237e;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #90caf9;
+            transform: translateX(5px);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">📰 NewsToday</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">หน้าแรก</a></li>
+                    <li><a href="#latest">ข่าวล่าสุด</a></li>
+                    <li><a href="#popular">ยอดนิยม</a></li>
+                    <li><a href="#category">หมวดหมู่</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>ข่าวสารที่น่าสนใจ</h1>
+            <p>อัพเดทข่าวสารล่าสุดจากทั่วทุกมุมโลก</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="ค้นหาข่าว...">
+            <button class="search-button">ค้นหา</button>
+        </div>
+
+        <section class="featured-section">
+            <h2 class="section-title">ข่าวเด่นประจำวัน</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <img src="/api/placeholder/400/200" alt="ข่าว 1" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">เทคโนโลยี</span>
+                        <h3 class="news-title">นวัตกรรมใหม่ล่าสุดในวงการเทคโนโลยี</h3>
+                        <p class="news-excerpt">การพัฒนาเทคโนโลยีล่าสุดที่จะเปลี่ยนแปลงโลกของเรา...</p>
+                        <div class="news-meta">
+                            <span>23 ธันวาคม 2024</span>
+                            <span>อ่าน: 1.2K</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="/api/placeholder/400/200" alt="ข่าว 2" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">การศึกษา</span>
+                        <h3 class="news-title">แนวทางการศึกษายุคใหม่</h3>
+                        <p class="news-excerpt">การเปลี่ยนแปลงในวงการการศึกษาที่น่าจับตามอง...</p>
+                        <div class="news-meta">
+                            <span>23 ธันวาคม 2024</span>
+                            <span>อ่าน: 956</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <img src="/api/placeholder/400/200" alt="ข่าว 3" class="news-image">
+                    <div class="news-content">
+                        <span class="news-category">กีฬา</span>
+                        <h3 class="news-title">การแข่งขันระดับโลกครั้งล่าสุด</h3>
+                        <p class="news-excerpt">ผลการแข่งขันและไฮไลท์สำคัญจากการแข่งขัน...</p>
+                        <div class="news-meta">
+                            <span>23 ธันวาคม 2024</span>
+                            <span>อ่าน: 823</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>เกี่ยวกับเรา</h3>
+                <p>เว็บไซต์ข่าวสารที่นำเสนอข้อมูลที่เป็นประโยชน์และน่าเชื่อถือ</p>
+            </div>
+            <div class="footer-section">
+                <h3>หมวดหมู่</h3>
+                <ul>
+                    <li><a href="#">การเมือง</a></li>
+                    <li><a href="#">เศรษฐกิจ</a></li>
+                    <li><a href="#">กีฬา</a></li>
+                    <li><a href="#">บันเทิง</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>ติดต่อเรา</h3>
+                <ul>
+                    <li><a href="#">อีเมล</a></li>
+                    <li><a href="#">โทรศัพท์</a></li>
+                    <li><a href="#">ที่อยู่</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
