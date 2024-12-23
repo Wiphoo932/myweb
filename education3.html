@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงเรียนวิทยาศาสตร์</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+        }
+
+        header {
+            background: rgba(0, 32, 96, 0.95);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .school-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .school-logo:hover {
+            transform: scale(1.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-item {
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .nav-item:hover {
+            color: #00ffff;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(0, 48, 135, 0.95);
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .dropdown-item {
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(0, 96, 255, 0.3);
+            padding-left: 1.5rem;
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(0, 32, 96, 0.8);
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .subject-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .subject-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+        }
+
+        h2 {
+            color: #00ffff;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: rgba(0, 32, 96, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+        }
+
+        .glow-text {
+            animation: glow 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="/api/placeholder/60/60" alt="โลโก้โรงเรียน" class="school-logo">
+            <nav>
+                <div class="dropdown">
+                    <a href="#" class="nav-item">รายวิชา</a>
+                    <div class="dropdown-content">
+                        <a href="#thai" class="dropdown-item">ภาษาไทย
+                            <div>- การอ่าน</div>
+                            <div>- การเขียน</div>
+                            <div>- วรรณคดี</div>
+                        </a>
+                        <a href="#english" class="dropdown-item">ภาษาอังกฤษ
+                            <div>- Grammar</div>
+                            <div>- Conversation</div>
+                            <div>- Writing</div>
+                        </a>
+                        <a href="#math" class="dropdown-item">คณิตศาสตร์
+                            <div>- พีชคณิต</div>
+                            <div>- เรขาคณิต</div>
+                            <div>- สถิติ</div>
+                        </a>
+                        <a href="#science" class="dropdown-item">วิทยาศาสตร์
+                            <div>- ฟิสิกส์</div>
+                            <div>- เคมี</div>
+                            <div>- ชีววิทยา</div>
+                        </a>
+                        <a href="#computer" class="dropdown-item">คอมพิวเตอร์
+                            <div>- การเขียนโปรแกรม</div>
+                            <div>- การออกแบบเว็บไซต์</div>
+                            <div>- AI และ Data Science</div>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1 class="glow-text">ยินดีต้อนรับสู่โรงเรียนวิทยาศาสตร์</h1>
+            <p>มุ่งสู่ความเป็นเลิศทางวิชาการ พัฒนาศักยภาพสู่สากล</p>
+        </section>
+
+        <div class="subject-grid">
+            <div class="subject-card" id="thai">
+                <div class="subject-icon">📚</div>
+                <h2>ภาษาไทย</h2>
+                <p>พัฒนาทักษะการสื่อสาร เรียนรู้วรรณคดีและวัฒนธรรมไทย</p>
+            </div>
+
+            <div class="subject-card" id="english">
+                <div class="subject-icon">🌎</div>
+                <h2>ภาษาอังกฤษ</h2>
+                <p>เสริมสร้างทักษะภาษาอังกฤษสู่มาตรฐานสากล</p>
+            </div>
+
+            <div class="subject-card" id="math">
+                <div class="subject-icon">📐</div>
+                <h2>คณิตศาสตร์</h2>
+                <p>พัฒนาทักษะการคิดวิเคราะห์และแก้ปัญหา</p>
+            </div>
+
+            <div class="subject-card" id="science">
+                <div class="subject-icon">🔬</div>
+                <h2>วิทยาศาสตร์</h2>
+                <p>ค้นพบและเรียนรู้ผ่านการทดลองและวิจัย</p>
+            </div>
+
+            <div class="subject-card" id="computer">
+                <div class="subject-icon">💻</div>
+                <h2>คอมพิวเตอร์</h2>
+                <p>เรียนรู้เทคโนโลยีและการพัฒนานวัตกรรม</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 โรงเรียนวิทยาศาสตร์. สงวนลิขสิทธิ์.</p>
+    </footer>
+</body>
+</html>

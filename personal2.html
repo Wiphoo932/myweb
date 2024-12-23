@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลส่วนตัว</title>
+    <style>
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(123, 31, 162, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(123, 31, 162, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(123, 31, 162, 0.5); }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border: 4px solid white;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .name {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #ffe6e6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-button {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .social-button:hover {
+            background: white;
+            color: #e73c7e;
+            transform: translateY(-5px);
+        }
+
+        .about-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .about-section:hover {
+            transform: scale(1.02);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .interests-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .interest-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 1s linear forwards;
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(20); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="profile-container">
+            <img src="/api/placeholder/200/200" alt="โปรไฟล์" class="profile-image">
+            <h1 class="name">ด.ช.วิภู เชื้อจีน</h1>
+            <p class="title">นักเรียนชั้นมัธยมศึกษาปีที่ 2</p>
+            <div class="social-links">
+                <a href="#" class="social-button">Facebook</a>
+                <a href="#" class="social-button">Instagram</a>
+                <a href="#" class="social-button">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="about-section">
+            <h2>เกี่ยวกับฉัน</h2>
+            <p>ยินดีต้อนรับสู่เว็บไซต์ส่วนตัวของผม! ผมอาศัยอยุ่ที่ ต.วังทอง อ.วังทอง จ.พิษณุโลก📍 เกิดเมื่อวันที่ 11 กันยายน 2553 ปัจจุบันอายุ 14 ปี‼😊<!DOCTYPE 
+                 </p>
+            
+            <div class="skills-container">
+                <span class="skill-tag">การเขียนโปรแกรม💻</span>
+                <span class="skill-tag">การออกแบบ✍️</span>
+                <span class="skill-tag">การเรียนหนังสือ📚</span>
+                <span class="skill-tag">การสื่อสาร📖</span>
+                <span class="skill-tag">การทำงานเป็นทีม💪</span>
+            </div>
+        </section>
+
+        <div class="interests-section">
+            <div class="interest-card">
+                <h3>งานอดิเรก</h3>
+                <p>การเรียนหนังสือ, การท่องเที่ยว, การอ่านหนังสือ</p>
+            </div>
+            <div class="interest-card">
+                <h3>การศึกษา</h3>
+                <p>จบการศึกษาจาก โรงเรียนอนุบาล โรจนวิทย์</p>
+            </div>
+            <div class="interest-card">
+                <h3>ประสบการณ์</h3>
+                <p>มีประสบการณ์ในการทำงานด้านการเรียน วิทย์-คณิต</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.width = '4px';
+            sparkle.style.height = '4px';
+            sparkle.style.left = e.pageX + 'px';
+            sparkle.style.top = e.pageY + 'px';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
