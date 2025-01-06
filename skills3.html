@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Skills</title>
+    <style>
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes growBar {
+            from { width: 0; }
+            to { width: var(--width); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .skill-category:nth-child(1) { animation-delay: 0.1s; }
+        .skill-category:nth-child(2) { animation-delay: 0.2s; }
+        .skill-category:nth-child(3) { animation-delay: 0.3s; }
+        .skill-category:nth-child(4) { animation-delay: 0.4s; }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-icon {
+            background: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .skill-bar {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-progress {
+            background: #edf2f7;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+            border-radius: 4px;
+            animation: growBar 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        .skill-details {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover .skill-details {
+            display: block;
+        }
+
+        .certificates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .certificate-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .certificate-content {
+            padding: 1.5rem;
+        }
+
+        .certificate-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .certificate-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="header-title">ทักษะและความสามารถ</h1>
+            <p>รวบรวมความเชี่ยวชาญและประสบการณ์ในด้านต่างๆ</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h2 class="category-title">
+                    <span class="category-icon">💻</span>
+                    ทักษะด้านเทคนิค
+                </h2>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>การเขียนโปรแกรม</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress-fill" style="--width: 65%"></div>
+                    </div>
+                    <div class="skill-details">
+                        <p>- Python, JavaScript, HTML/CSS</p>
+                        <p>- การพัฒนาเว็บแอปพลิเคชัน มาใช้ในชีวิตประจำวัน</p>
+                        <p>- การจัดการฐานข้อมูล</p>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>การวิเคราะห์ข้อมูล</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress-fill" style="--width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h2 class="category-title">
+                    <span class="category-icon">🎨</span>
+                    ทักษะด้านการออกแบบ
+                </h2>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>UI/UX Design การศิลปะ</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress-fill" style="--width: 90%"></div>
+                    </div>
+                    <div class="skill-details">
+                        <p>- การออกแบบส่วนต่อประสานผู้ใช้</p>
+                        <p>- การสร้างความมีศิลปะในตัว</p>
+                        <p>- การทำ Wireframe และ Prototype</p>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>กราฟิกดีไซน์</span>
+                        <span>82%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress-fill" style="--width: 82%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h2 class="category-title">
+                    <span class="category-icon">🤝</span>
+                    ทักษะการทำงานร่วมกัน
+                </h2>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>การทำงานเป็นทีม</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress-fill" style="--width: 95%"></div>
+                    </div>
+                    <div class="skill-details">
+                        <p>- การสื่อสารที่มีประสิทธิภาพ</p>
+                        <p>- การจัดการโครงการ</p>
+                        <p>- การแก้ไขปัญหาร่วมกัน</p>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>ภาวะผู้นำ</span>
+                        <span>87%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress-fill" style="--width: 87%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h2 class="category-title">
+                    <span class="category-icon">🌏</span>
+                    ทักษะด้านภาษา
+                </h2>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>ภาษาอังกฤษ</span>
+                        <span>68%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress-fill" style="--width: 68%"></div>
+                    </div>
+                    <div class="skill-details">
+                        <p>- การสื่อสารธุรกิจ</p>
+                        <p>- การนำเสนองาน</p>
+                        <p>- การเขียนเอกสารทางการ</p>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>ภาษาญี่ปุ่น</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress-fill" style="--width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="certificates">
+            <div class="certificate-card">
+                <img src="/api/placeholder/400/200" alt="Certificate 1" class="certificate-image">
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Web Development Certificate</h3>
+                    <p class="certificate-date">2024</p>
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <img src="/api/placeholder/400/200" alt="Certificate 2" class="certificate-image">
+                <div class="certificate-content">
+                    <h3 class="certificate-title">UX Design Certificate</h3>
+                    <p class="certificate-date">2023</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
