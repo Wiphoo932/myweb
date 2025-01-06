@@ -6,23 +6,13 @@
     <title>Awards & Achievements</title>
     <style>
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes shine {
-            0% {
-                background-position: -200% center;
-            }
-            100% {
-                background-position: 200% center;
-            }
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
 
         @keyframes float {
@@ -39,9 +29,31 @@
         }
 
         body {
-            background: #f8f9fa;
+            background: #f5f6fa;
             color: #2c3e50;
             line-height: 1.6;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #2c3e50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            background: #34495e;
         }
 
         header {
@@ -61,22 +73,20 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.1) 50%, transparent 55%);
-            background-size: 200% auto;
-            animation: shine 3s linear infinite;
+            animation: shine 3s infinite;
         }
 
         .header-content {
-            position: relative;
-            z-index: 1;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
         }
 
         .header-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: float 3s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .container {
@@ -87,7 +97,7 @@
 
         .awards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -100,6 +110,7 @@
             transition: all 0.3s ease;
             opacity: 0;
             animation: fadeInUp 0.5s ease forwards;
+            position: relative;
         }
 
         .award-card:nth-child(1) { animation-delay: 0.1s; }
@@ -116,108 +127,95 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 4px solid #0d47a1;
         }
 
         .award-content {
             padding: 2rem;
         }
 
-        .award-type {
-            background: #e3f2fd;
-            color: #0d47a1;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
         .award-title {
             font-size: 1.5rem;
             color: #1a237e;
             margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
         }
 
-        .award-description {
-            color: #666;
-            margin-bottom: 1rem;
+        .award-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #0d47a1;
+            transition: width 0.3s ease;
         }
 
-        .award-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
+        .award-card:hover .award-title::after {
+            width: 100px;
         }
 
         .award-date {
-            color: #888;
-            font-size: 0.9rem;
-        }
-
-        .award-organization {
-            color: #0d47a1;
-            font-weight: bold;
-        }
-
-        .highlight-section {
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            margin: 3rem 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: #1a237e;
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #1a237e, #0d47a1);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            background: #e3f2fd;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            color: #0d47a1;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
             color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .award-description {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .award-details {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .award-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ffd700;
+            color: #1a237e;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            background: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .filter-button:hover {
+            background: #1a237e;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-button.active {
+            background: #1a237e;
+            color: white;
         }
 
         @media (max-width: 768px) {
@@ -225,94 +223,119 @@
                 grid-template-columns: 1fr;
             }
             
-            .header-title {
-                font-size: 2rem;
+            .category-filter {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
+    <a href="index2.html" class="back-button">
+        ← กลับ
+    </a>
+
     <header>
         <div class="header-content">
             <h1 class="header-title">รางวัลและความสำเร็จ</h1>
-            <p>บันทึกแห่งความภาคภูมิใจและการยอมรับ</p>
+            <p>รวบรวมความภาคภูมิใจและความสำเร็จตลอดการศึกษา</p>
         </div>
     </header>
 
     <div class="container">
-        <div class="highlight-section">
-            <h2 class="section-title">สถิติโดยรวม</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">รางวัลที่ได้รับ</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">การแข่งขัน</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">3+</div>
-                    <div class="stat-label">รางวัลระดับประเทศ</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">190+</div>
-                    <div class="stat-label">ชั่วโมงการฝึกฝน</div>
-                </div>
-            </div>
+        <div class="category-filter">
+            <button class="filter-button active">ทั้งหมด</button>
+            <button class="filter-button">การแข่งขันวิชาการ</button>
+            <button class="filter-button">กิจกรรมพิเศษ</button>
+            <button class="filter-button">การประกวด</button>
         </div>
 
         <div class="awards-grid">
             <div class="award-card">
-                <img src="/api/placeholder/400/200" alt="รางวัลที่ 232 ของนานาชาติ" class="award-image">
+                <span class="award-badge">ชนะเลิศ</span>
+                <img src="/api/placeholder/400/200" alt="รางวัลที่ 1" class="award-image">
                 <div class="award-content">
-                    <span class="award-type">การแข่งขันวิชาการ</span>
-                    <h3 class="award-title">รางวัลการแข่งขันคณิต(IMC)</h3>
-                    <p class="award-description">การแข่งขันคณิตศาสตร์ระดับประเทศ ประจำปี 2024</p>
-                    <div class="award-meta">
-                        <span class="award-date">ธันวาคม 2024</span>
-                        <span class="award-organization">สมาคมคณิตศาสตร์แห่งโลก</span>
+                    <h3 class="award-title">การแข่งขันคณิตศาสตร์ (IMC)</h3>
+                    <div class="award-date">
+                        📅 มกราคม 2024
+                    </div>
+                    <p class="award-description">
+                        ชนะเลิศการแข่งขันคณิตศาสตร์ระดับโลก ประจำปี 2024
+                    </p>
+                    <div class="award-details">
+                        <p>- เกียรติบัตรระดับเหรียญเงิน Silver🥈</p>
                     </div>
                 </div>
             </div>
 
             <div class="award-card">
+                <span class="award-badge">รองชนะเลิศ</span>
                 <img src="/api/placeholder/400/200" alt="รางวัลที่ 2" class="award-image">
                 <div class="award-content">
-                    <span class="award-type">การแข่งขันทักษะ</span>
-                    <h3 class="award-title">รางวัลคณิตศาสตร์ยอดเยี่ยม</h3>
-                    <p class="award-description">ได้รับรางการแข่งขันคณิตศาสตร์สาขา เวทคณิต</p>
-                    <div class="award-meta">
-                        <span class="award-date">กุมภาพันธ์ 2023</span>
-                        <span class="award-organization">สสวท.</span>
+                    <h3 class="award-title">การประกวดการแสดงของลูกเสือและยุวกาชาด</h3>
+                    <div class="award-date">
+                        📅 กันยายน 2023
+                    </div>
+                    <p class="award-description">
+                        รองชนะเลิศอันดับ 1 การประกวดการแสดงของลูกเสือและยุวกาชาด🥈
+                    </p>
+                    <div class="award-details">
+                        <p>- ได้รับรางวัลสนับสนุนการพัฒนาต่อยอด</p>
+                        <p>- โอกาสในการแสดงของลูกเสือและยุวกาชาด</p>
                     </div>
                 </div>
             </div>
 
             <div class="award-card">
-                <img src="/api/placeholder/400/200" alt="รางวัลที่ 3" class="award-image">
+                <span class="award-badge">เหรียญเงิน</span>
+                <img src="/api/placeholder/400/200" alt="รางวัลที่ 2" class="award-image">
                 <div class="award-content">
-                    <span class="award-type">กิจกรรมพิเศษ</span>
-                    <h3 class="award-title">รางวัลนักเรียนเรียบร้อย</h3>
-                    <p class="award-description">ได้รับการยกย่องในด้านการเป็นผู้นำและการทำประโยชน์เพื่อสังคม</p>
-                    <div class="award-meta">
-                        <span class="award-date">กุมภาพันธ์ 2023</span>
-                        <span class="award-organization">โรงเรียน</span>
+                    <h3 class="award-title">การแข่งขันทักษะเวทคณิต</h3>
+                    <div class="award-date">
+                        📅 กุมภาพันธ์ 2023
+                    </div>
+                    <p class="award-description">
+                        รางเหรียญเงินการแข่งขันทักษะเวทคณิต
+                    </p>
+                    <div class="award-details">
+                        <p>- เกียรติบัตรรางวัลเหรียญเงิน ด้วยคะแนน 71/100</p>
+                        <p>- โอกาสการเข้าร่วมการแข่งขันศิลปะหัตถกรรมครั้งที่ 70</p>
                     </div>
                 </div>
             </div>
 
             <div class="award-card">
+                <span class="award-badge">พิเศษ</span>
                 <img src="/api/placeholder/400/200" alt="รางวัลที่ 4" class="award-image">
                 <div class="award-content">
-                    <span class="award-type">การแข่งขันทักษะ</span>
-                    <h3 class="award-title">รางวัลยอดเยี่ยมของการเล่น 180IQ</h3>
-                    <p class="award-description">ชนะเลิศการแข่งขันทักษะ180 IQ ระดับโรงเรียน</p>
-                    <div class="award-meta">
-                        <span class="award-date">ตุลาคม 2022</span>
-                        <span class="award-organization">สถาบันภาษานานาชาติ</span>
+                    <h3 class="award-title">รางวัลนักเรียนเรียบร้อย</h3>
+                    <div class="award-date">
+                        📅 กุมภาพันธ์ 2023
+                    </div>
+                    <p class="award-description">
+                        ได้รับคัดเลือกเป็นนักเรียนเรียบร้อย มีมารยาท ประจำปีการศึกษา 2023
+                    </p>
+                    <div class="award-details">
+                        <p>- เกียรติบัตร</p>
+                        <p>- สิทธิพิเศษในการเข้าร่วมกิจกรรมพัฒนาศักยภาพ</p>
                     </div>
                 </div>
+            </div>
+
+    <div class="award-card">
+        <span class="award-badge">พิเศษ</span>
+        <img src="/api/placeholder/400/200" alt="รางวัลที่ 5" class="award-image">
+        <div class="award-content">
+            <h3 class="award-title">รางวัลนักเรียนเรียนดี</h3>
+            <div class="award-date">
+                📅 พฤศจิกายน 2023
+            </div>
+            <p class="award-description">
+                ได้รับคัดเลือกเป็นนักเรียนเรียนดี 2023 (เกรดเฉลี่ย4.00)
+            </p>
+            <div class="award-details">
+                <p>- เกียรติบัตร</p>
+                <p>- สิทธิพิเศษในการเข้าร่วมกิจกรรมพัฒนาศักยภาพ</p>
             </div>
         </div>
     </div>
