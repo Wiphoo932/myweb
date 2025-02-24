@@ -12,6 +12,25 @@
             font-family: 'Sarabun', sans-serif;
         }
 
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
         body {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                         url('pcshspl.jpg');
@@ -189,6 +208,7 @@
     </style>
 </head>
 <body>
+    <a href="index2.html" class="back-button">← กลับ</a>
     <header>
         <div class="header-content">
             <img src="images.png" alt="โลโก้โรงเรียน" class="school-logo">

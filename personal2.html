@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ข้อมูลส่วนตัว</title>
     <style>
+        /* เพิ่ม style สำหรับปุ่มกลับ */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 2px solid white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover {
+            background: white;
+            color: #e73c7e;
+            transform: scale(1.1);
+        }
+
         @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -178,6 +202,9 @@
     </style>
 </head>
 <body>
+    <!-- เพิ่มปุ่มกลับ -->
+    <a href="index2.html" class="back-button">← กลับหน้าหลัก</a>
+
     <div class="hero-section">
         <div class="profile-container">
             <img src="WIN_20241223_16_37_54_Pro.jpg" alt="โปรไฟล์" class="profile-image">
